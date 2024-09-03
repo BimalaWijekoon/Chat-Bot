@@ -1,30 +1,37 @@
 version: "3.1"
 
 stories:
-
-- story: happy path
+- story: greet and respond
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
 
-- story: sad path 1
+- story: say goodbye
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
+  - intent: goodbye
   - action: utter_goodbye
+
+- story: ask time and respond
+  steps:
+  - intent: ask_time
+  - action: action_get_time  # Only use the custom action or utterance
+
+- story: ask weather and respond
+  steps:
+  - intent: ask_weather
+  - action: action_get_weather  # Only use the custom action or utterance
+
+- story: affirm and respond
+  steps:
+  - intent: affirm
+  - action: utter_affirm
+
+- story: deny and respond
+  steps:
+  - intent: deny
+  - action: utter_deny
+
+- story: challenge bot
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

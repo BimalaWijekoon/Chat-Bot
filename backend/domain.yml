@@ -3,32 +3,34 @@ version: "3.1"
 intents:
   - greet
   - goodbye
+  - ask_time
+  - ask_weather
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
+
+actions:
+  - action_get_time
+  - action_get_weather
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+    - text: "Hello! How can I assist you today?"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Goodbye! Have a great day!"
+
+  utter_ask_time:
+    - text: "Sorry, I can't check the time right now. But I can help with something else!"
+
+  utter_ask_weather:
+    - text: "I can't provide weather updates yet, but I'm here to chat!"
+
+  utter_affirm:
+    - text: "Great! How can I assist you further?"
+
+  utter_deny:
+    - text: "No worries! Let me know if you need anything else."
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+    - text: "I am a chatbot powered by Rasa. How can I assist you today?"
