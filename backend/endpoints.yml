@@ -44,7 +44,7 @@ action_endpoint:
 #   url: localhost
 #   username: username
 #   password: password
-#   queue: queue
+#   queue: queuexc
 
 # Socket.IO channel configuration
 socketio:
