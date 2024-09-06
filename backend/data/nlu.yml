@@ -1,46 +1,92 @@
-version: "3.1"
-
+version: "3.0"
 nlu:
-- intent: greet
-  examples: |
-    - hello
-    - hi
-    - hey
-    - good morning
-    - good evening
-    - hey there
+  - intent: greet
+    examples: |
+      - Hello
+      - Hi
+      - Hey
+      - Hi there
+      - Hello there
+      - Good morning
+      - Good evening
 
-- intent: goodbye
-  examples: |
-    - bye
-    - goodbye
-    - see you later
-    - have a nice day
-    - take care
+  - intent: goodbye
+    examples: |
+      - Goodbye
+      - See you later
+      - Bye
+      - Take care
+      - See you
+      - Bye bye
 
-- intent: ask_time
-  examples: |
-    - what time is it?
-    - can you tell me the time?
-    - do you know the time?
+  - intent: mood_great
+    examples: |
+      - I am feeling great
+      - I am doing good
+      - I feel fantastic
+      - I'm happy
+      - Feeling awesome
 
-- intent: ask_weather
-  examples: |
-    - what's the weather like?
-    - will it rain today?
-    - how's the weather?
-    - is it sunny outside?
+  - intent: mood_unhappy
+    examples: |
+      - I am feeling sad
+      - I feel down
+      - I am unhappy
+      - I am depressed
+      - I am feeling low
+      - I am not okay
+      - I'm feeling bad
 
-- intent: affirm
-  examples: |
-    - yes
-    - sure
-    - of course
-    - absolutely
+  - intent: ask_help
+    examples: |
+      - I need help
+      - Can you help me?
+      - I feel lost
+      - I don't know what to do
+      - I need someone to talk to
 
-- intent: deny
-  examples: |
-    - no
-    - not at all
-    - nope
-    - I don't think so
+  - intent: ask_resources
+    examples: |
+      - Where can I find mental health resources?
+      - Can you guide me to a therapist?
+      - I need information about mental health
+      - Tell me about mental health services
+
+  - intent: suicidal_thoughts
+    examples: |
+      - I am thinking about ending it all
+      - I don't want to live anymore
+      - I feel like hurting myself
+      - I can't go on
+      - I want to end my life
+      - I'm thinking of suicide
+
+  # Additional intents and examples for more comprehensive understanding
+  - intent: anxiety
+    examples: |
+      - I am feeling anxious
+      - I am really stressed
+      - I feel nervous all the time
+      - I can't stop worrying
+
+  - intent: need_motivation
+    examples: |
+      - I need some motivation
+      - Can you motivate me?
+      - I need a positive quote
+      - I'm lacking motivation
+
+  - intent: affirm
+    examples: |
+      - Yes
+      - Sure
+      - Okay
+      - Definitely
+      - Absolutely
+
+  - intent: deny
+    examples: |
+      - No
+      - Not really
+      - No thanks
+      - I don't think so

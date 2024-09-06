@@ -1,11 +1,12 @@
+// src/App.js
+
 import React from 'react';
-import Chatbot from './components/Chatbot';
+import Chat from './components/Chat';  // Updated import path for the Chat component
 
 function App() {
   return (
     <div className="App">
-      <h1>Rasa Chatbot</h1>
-      <Chatbot />
+      <Chat />
     </div>
   );
 }

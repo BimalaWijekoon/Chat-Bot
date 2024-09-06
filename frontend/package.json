@@ -6,16 +6,19 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.20.5",
     "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "react-simple-chatbot": "^0.6.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"npm run start-react\" \"npm run start-rasa\"",
+    "start": "concurrently \"npm run start-react\" \"npm run start-rasa\" \"npm run start-actions\"",
     "start-react": "react-scripts start",
     "start-rasa": "cd ../backend && rasa run --cors \"*\"",
+    "start-actions": "cd ../backend && rasa run actions",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

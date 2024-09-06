@@ -1,36 +1,61 @@
-version: "3.1"
+version: "3.0"
 
 intents:
   - greet
   - goodbye
-  - ask_time
-  - ask_weather
+  - mood_great
+  - mood_unhappy
+  - ask_help
+  - ask_resources
+  - suicidal_thoughts
+  - anxiety
+  - need_motivation
   - affirm
   - deny
-  - bot_challenge
 
-actions:
-  - action_get_time
-  - action_get_weather
+entities:
+  - mood
+  - severity
+
+slots:
+  mood:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+
+  severity:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_text
 
 responses:
   utter_greet:
     - text: "Hello! How can I assist you today?"
-
   utter_goodbye:
-    - text: "Goodbye! Have a great day!"
+    - text: "Take care! Remember, you're not alone."
+  utter_ask_help:
+    - text: "I'm here to help. Can you tell me more about how you're feeling?"
+  utter_suggest_resources:
+    - text: "You can find mental health resources [here](https://example.com)."
+  utter_suicidal_help:
+    - text: "I'm really sorry to hear that you're feeling this way. It's important to talk to someone immediately. Here's a number you can call: [Emergency Contact]."
+  utter_encourage:
+    - text: "Remember, you're stronger than you think. Every step you take is progress."
+  utter_motivate:
+    - text: "You are capable of amazing things. Keep going!"
 
-  utter_ask_time:
-    - text: "Sorry, I can't check the time right now. But I can help with something else!"
+actions:
+  - action_suggest_therapist
+  - action_check_severity
 
-  utter_ask_weather:
-    - text: "I can't provide weather updates yet, but I'm here to chat!"
+forms:
+  mental_health_form:
+    required_slots:
+      - severity
+      - mood
 
-  utter_affirm:
-    - text: "Great! How can I assist you further?"
-
-  utter_deny:
-    - text: "No worries! Let me know if you need anything else."
-
-  utter_iamabot:
-    - text: "I am a chatbot powered by Rasa. How can I assist you today?"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

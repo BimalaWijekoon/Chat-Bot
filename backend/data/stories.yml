@@ -1,37 +1,38 @@
-version: "3.1"
+version: "3.0"
 
 stories:
-- story: greet and respond
-  steps:
-  - intent: greet
-  - action: utter_greet
+  - story: greet path
+    steps:
+      - intent: greet
+      - action: utter_greet
 
-- story: say goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - story: goodbye path
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: ask time and respond
-  steps:
-  - intent: ask_time
-  - action: action_get_time  # Only use the custom action or utterance
+  - story: unhappy mood
+    steps:
+      - intent: mood_unhappy
+      - action: utter_ask_help
 
-- story: ask weather and respond
-  steps:
-  - intent: ask_weather
-  - action: action_get_weather  # Only use the custom action or utterance
+  - story: suggest resources
+    steps:
+      - intent: ask_resources
+      - action: utter_suggest_resources
 
-- story: affirm and respond
-  steps:
-  - intent: affirm
-  - action: utter_affirm
+  - story: handle suicidal thoughts
+    steps:
+      - intent: suicidal_thoughts
+      - action: utter_suicidal_help
+      - action: action_check_severity
 
-- story: deny and respond
-  steps:
-  - intent: deny
-  - action: utter_deny
+  - story: provide motivation
+    steps:
+      - intent: need_motivation
+      - action: utter_motivate
 
-- story: challenge bot
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - story: anxiety management
+    steps:
+      - intent: anxiety
+      - action: utter_encourage

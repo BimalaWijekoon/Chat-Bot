@@ -1,13 +1,23 @@
-version: "3.1"
+version: "3.0"
 
 rules:
+  - rule: Say goodbye anytime
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - rule: Offer resources on request
+    steps:
+      - intent: ask_resources
+      - action: utter_suggest_resources
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - rule: Handle suicidal thoughts
+    steps:
+      - intent: suicidal_thoughts
+      - action: utter_suicidal_help
+      - action: action_check_severity
+
+  - rule: Provide motivation
+    steps:
+      - intent: need_motivation
+      - action: utter_motivate
