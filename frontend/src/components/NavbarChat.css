@@ -1,0 +1,50 @@
+/* src/css/Navbar.css */
+.navbar {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+  font-size: 1em;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #4b0082; /* Indigo color for the brand */
+  flex-grow: 1;
+  text-align: center; /* Center the brand name */
+}
+
+.navbar-right {
+  font-size: 1em;
+  font-weight: bold;
+  color: #4b0082;
+  white-space: nowrap;
+  margin-right: 30px;
+}
+
+.logout-link {
+  color: red;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.logout-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,212 @@
+.signup-page {
+  background-color: #ffffff;
+    background-image: url('E:\Chat-Bot\ChatBot\frontend\src\components\images\log-sign.png'); /* Same background as the dashboard */
+  background-size: cover;
+  background-position: center;  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.signup-outer-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  margin-top: 50px;
+}
+
+/* The rest of your signup-specific styles remain unchanged */
+.signup-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 900px;
+  max-width: 900px;
+  position: relative;
+  padding-bottom: 50px;
+  height: 500px;
+}
+
+.signup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.signup-profile-picture-container {
+  margin: 0;
+}
+
+.signup-profile-picture-label {
+  cursor: pointer;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.signup-profile-picture-label .signup-profile-picture-placeholder {
+  font-size: 36px;
+  color: #007bff;
+}
+
+.signup-profile-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signup-form {
+  width: 100%;
+}
+
+.signup-title {
+  font-size: 20px;
+  color: royalblue;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  margin-left: 5px;
+}
+
+.signup-title::before,
+.signup-title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: -25px;
+  background-color: royalblue;
+}
+
+.signup-title::before {
+  width: 18px;
+  height: 18px;
+  background-color: royalblue;
+}
+
+.signup-title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.signup-form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.signup-form-group {
+  width: 48%;
+  position: relative;
+}
+
+.signup-form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.signup-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.signup-input-container input,
+.signup-input-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 auto;
+  display: block;
+}
+
+.signup-tooltip {
+  position: absolute;
+  top: 50%;
+  left: 105%;
+  transform: translateY(-50%);
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.signup-input-container input:focus + .signup-tooltip,
+.signup-input-container input:hover + .signup-tooltip,
+.signup-input-container select:focus + .signup-tooltip,
+.signup-input-container select:hover + .signup-tooltip {
+  opacity: 1;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
+.signup-already-registered {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-already-registered a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-already-registered a:hover {
+  text-decoration: underline;
+}

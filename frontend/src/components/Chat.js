@@ -1,14 +1,23 @@
 // src/components/Chat.js
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Input, Card } from 'antd';
+import { Button, Input } from 'antd';
 import './Chat.css';
+import Navbar from "./NavbarChat";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
-  const [isChatStarted, setIsChatStarted] = useState(false); // For managing the welcome screen
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const sendMessage = async () => {
     if (userInput.trim() === '') return;
@@ -48,55 +57,43 @@ const Chat = () => {
     setUserInput('');
   };
 
-  const startChat = () => {
-    setIsChatStarted(true);
-  };
-
   return (
-    <div className="chat-container">
-      {!isChatStarted ? (
-        <div className="welcome-screen">
-          <div className="bot-avatar" />
-          <h2>Bop earthling</h2>
-          <p>I'm Tom, I'm your personal assistant. I'm here to guide you on your project.</p>
-          <Button type="primary" className="start-button" onClick={startChat}>
-            Start now
-          </Button>
-        </div>
-      ) : (
-        <div className="chat-window">
-          {messages.map((msg, index) => (
-            <div key={index} className="message-bubble">
-              {msg.user && (
-                <div className="user-message bubble-right">
-                  {msg.user}
+      <>
+      <Navbar />
+      <div className="chat-page">
+        <div className="chat-container">
+          <div className="chat-window">
+            {messages.map((msg, index) => (
+                <div key={index} className={`message-bubble ${msg.user ? 'bubble-right' : 'bubble-left'}`}>
+                  {msg.user ? (
+                      <div className="user-message">{msg.user}</div>
+                  ) : (
+                      <div className="bot-message">
+                        <div className="bot-avatar-small"/>
+                        {msg.bot}
+                      </div>
+                  )}
                 </div>
-              )}
-              {msg.bot && (
-                <div className="bot-message bubble-left">
-                  <div className="bot-avatar-small" />
-                  {msg.bot}
-                </div>
-              )}
-            </div>
-          ))}
+            ))}
+            <div ref={messagesEndRef}/>
+          </div>
           <div className="input-section">
             <Input
-              className="chat-input"
-              type="text"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              onPressEnter={sendMessage}
-              placeholder="Type your message..."
+                className="chat-input"
+                type="text"
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                onPressEnter={sendMessage}
+                placeholder="Type your message..."
             />
             <Button type="primary" onClick={sendMessage} className="send-button">
               Send
             </Button>
           </div>
         </div>
-      )}
-    </div>
-  );
-};
+      </div>
+        </>
+        );
+        };
 
-export default Chat;
+        export default Chat;

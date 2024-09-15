@@ -1,14 +1,22 @@
-// src/App.js
-
+// src/App.jsx
 import React from 'react';
-import Chat from './components/Chat';  // Updated import path for the Chat component
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import StartupPage from '../src/components/StartupPage';
+import Login from '../src/components/Login';
+import Signup from '../src/components/Signup';
+import ChatPage from '../src/components/Chat'; // Assuming ChatPage is your main chat component
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Chat />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<StartupPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/chat" element={<ChatPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
