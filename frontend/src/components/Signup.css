@@ -1,6 +1,6 @@
 .signup-page {
   background-color: #ffffff;
-    background-image: url('E:\Chat-Bot\ChatBot\frontend\src\components\images\log-sign.png'); /* Same background as the dashboard */
+    background-image: url('../components/images/log-sign.png'); /* Same background as the dashboard */
   background-size: cover;
   background-position: center;  display: flex;
   justify-content: center;

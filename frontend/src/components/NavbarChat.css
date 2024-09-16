@@ -1,5 +1,5 @@
-/* src/css/Navbar.css */
-.navbar {
+/* src/css/NavbarChat.css */
+.chatnavbar {
   width: 100%;
   padding: 10px 20px;
   background-color: white;
@@ -15,14 +15,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-left {
+.chatnavbar-left {
   font-size: 1em;
   font-weight: bold;
-  color: red;
-  cursor: pointer;
+  color: #4b0082; /* Indigo color for welcome message */
+  margin-left: 20px;
 }
 
-.navbar-brand {
+.chatnavbar-brand {
   font-size: 1.5em;
   font-weight: bold;
   color: #4b0082; /* Indigo color for the brand */
@@ -30,21 +30,55 @@
   text-align: center; /* Center the brand name */
 }
 
-.navbar-right {
-  font-size: 1em;
-  font-weight: bold;
-  color: #4b0082;
-  white-space: nowrap;
-  margin-right: 30px;
-}
-
-.logout-link {
-  color: red;
-  cursor: pointer;
+.chatnavbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   font-size: 1.1em;
   font-weight: bold;
+  color: #4b0082;
+  margin-right: 30px;
+  cursor: pointer;
 }
 
-.logout-link:hover {
+.nav-button {
+  color: red;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 5px 10px;
+}
+
+.nav-button:hover {
+  color: darkred;
   text-decoration: underline;
+}
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  min-width: 160px;
+  z-index: 1;
+}
+
+.nav-dropdown:hover .dropdown-content {
+  display: block; /* Show dropdown on hover */
+}
+
+.dropdown-item {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
 }

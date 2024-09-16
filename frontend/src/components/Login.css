@@ -1,8 +1,9 @@
 /* src/css/Login.css */
 .login-page {
-  background-color: #ffffff;
-
-  display: flex;
+background-color: #ffffff;
+    background-image: url('../components/images/log-sign.png'); /* Same background as the dashboard */
+  background-size: cover;
+  background-position: center;  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -36,10 +37,15 @@
 }
 
 .login-sign-in-header {
+  font-size: 20px;
+  color: royalblue;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  margin: 0;
+  margin-left: 5px;
 }
 
 .login-form-group {

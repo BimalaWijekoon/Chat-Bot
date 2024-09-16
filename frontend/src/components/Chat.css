@@ -1,12 +1,14 @@
 /* src/components/Chat.css */
+
 body {
   margin: 0;
   padding: 0;
   overflow: hidden; /* Prevent scrolling */
 }
+
 .chat-page {
   display: flex;
-  background-image: url('E:\Chat-Bot\ChatBot\frontend\src\components\images\chatbot.jpg'); /* Same background as the dashboard */
+  background-image: url('E:/Chat-Bot/ChatBot/frontend/src/components/images/chatbot.jpg'); /* Same background as the dashboard */
   background-color: rgba(188, 188, 188, 0.25); /* Transparent purple */
   background-size: cover;
   background-position: center;
@@ -28,7 +30,7 @@ body {
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  width:450px;
+  width: 450px;
   height: 600px;
 }
 
@@ -51,6 +53,7 @@ body {
   align-items: center;
   margin-bottom: 10px;
   max-width: 80%;
+  position: relative; /* Ensures proper positioning */
 }
 
 .bubble-left {
@@ -59,8 +62,8 @@ body {
   padding: 10px;
   border-radius: 10px 10px 10px 0;
   margin-left: 10px;
-  position: relative;
   display: flex;
+  align-items: center; /* Align avatar and text */
 }
 
 .bubble-right {
@@ -70,18 +73,41 @@ body {
   border-radius: 10px 10px 0 10px;
   margin-right: 10px;
   color: white;
-  position: relative;
   display: flex;
+  align-items: center; /* Align avatar and text */
 }
 
-.bot-avatar-small {
+.bot-avatar-small,
+.user-avatar-small {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  border-radius: 50%; /* Make the image circular */
+  overflow: hidden; /* Ensures no overflow */
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0; /* Prevents the avatar from shrinking */
+}
+
+.bot-avatar-image,
+.user-avatar-image {
+  width: 100%; /* Ensures the image fits the container */
+  height: 100%;
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensures the image covers the container */
+}
+
+.user-avatar-placeholder {
   width: 30px;
   height: 30px;
   margin-right: 8px;
   background-color: #f0f0f0;
   border-radius: 50%;
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #555;
 }
 
 .input-section {
