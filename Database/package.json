@@ -17,7 +17,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.19.1",
     "helmet": "^7.0.0",
-    "mongoose": "^8.2.2"
+    "mongoose": "^8.2.2",
+    "nodemailer": "^6.9.15"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

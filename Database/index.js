@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const helmet = require('helmet');
+const nodemailer = require('nodemailer'); // Import Nodemailer
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,6 +25,15 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => console.log('Connected to MongoDB'));
 
+// Nodemailer setup for sending emails
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
 // User Schema definition
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
@@ -35,8 +45,8 @@ const userSchema = new mongoose.Schema({
   telephone: { type: String, required: true },
   relativeEmail: { type: String, required: true },
   profilePicture: { type: String },
-  lastLogin: { type: String, default: '00:00:00 0000-00-00' },  // Add lastLogin field with default value
-  lastLogout: { type: String, default: '00:00:00 0000-00-00' } // Add lastLogout field with default value
+  lastLogin: { type: String, default: '00:00:00 0000-00-00' },
+  lastLogout: { type: String, default: '00:00:00 0000-00-00' }
 });
 
 const User = mongoose.model('User', userSchema);
@@ -201,6 +211,63 @@ app.post('/update-logout-time', async (req, res) => {
   } catch (error) {
     console.error('Error updating logout time:', error.message);
     res.status(500).json({ error: 'Failed to update logout time' });
+  }
+});
+
+// Route to send a test email
+app.get('/send-test-email', async (req, res) => {
+  try {
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'bmwmiuranda2002@gmail.com', // Replace with the recipient's email
+      subject: 'Test Email from Nodemailer',
+      text: 'This is a test email sent from Nodemailer using an app-specific password.',
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error.message);
+        return res.status(500).json({ error: 'Failed to send test email' });
+      } else {
+        console.log('Test email sent:', info.response);
+        return res.status(200).json({ message: 'Test email sent successfully' });
+      }
+    });
+  } catch (error) {
+    console.error('Error in test email route:', error.message);
+    res.status(500).json({ error: 'Failed to send test email' });
+  }
+});
+
+// Route to send an emergency email to a relative
+app.post('/send-emergency-email', async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ email }); // Find the user by email
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: user.relativeEmail, // Send to the relative's email
+      subject: 'Emergency Alert: Immediate Attention Needed!',
+      text: `Dear ${user.relative},\n\nThis is an urgent message regarding ${user.firstName} ${user.lastName}. They are currently seeking help on our mental health support platform and may need your immediate attention.\n\nPlease reach out to them as soon as possible.\n\nThank you.`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending emergency email:', error.message);
+        return res.status(500).json({ error: 'Failed to send emergency email' });
+      } else {
+        console.log('Emergency email sent:', info.response);
+        return res.status(200).json({ message: 'Emergency email sent successfully' });
+      }
+    });
+  } catch (error) {
+    console.error('Error in sending emergency email:', error.message);
+    res.status(500).json({ error: 'Failed to send emergency email' });
   }
 });
 
