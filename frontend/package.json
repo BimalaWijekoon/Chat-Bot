@@ -24,8 +24,8 @@
   "scripts": {
     "start": "concurrently \"npm run start-react\" \"npm run start-rasa\" \"npm run start-actions\" \"npm run start-server\"",
     "start-react": "react-scripts start",
-    "start-rasa": "cd ../backend && rasa run --cors \"*\"",
-    "start-actions": "cd ../backend && rasa run actions",
+    "start-rasa": "cd ../RASA && rasa run --cors \"*\"",
+    "start-actions": "cd ../RASA && rasa run actions",
     "start-server": "cd ../Database && npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
